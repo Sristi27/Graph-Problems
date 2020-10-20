@@ -1,0 +1,44 @@
+Question: Count number of nodes in a given level in a tree from a source in an undirected graph using BFS.
+
+Solution:
+
+int Graph::BFS(int s,int l)
+{
+    bool *visited=new bool[V];
+    int level[V];
+    
+    for(int i=0;i<V;i++)
+    {
+       visited[i]=false;
+       level[i]=0;
+    }
+    
+    list<int>queue;
+    
+    while(!queue.empty())
+    {
+        s=queue.front();
+        queue.pop_front();
+        
+        
+        for(auto i=adj[s].begin();i!=adj[s].end();i++)
+        {
+            if(!visited[*i])
+            {
+                level[i]=level[s]+1;
+                visited[*i]=true;
+                queue.push_back(*i);
+            }
+        }
+     }
+     
+     
+     int count=0;
+     for(int i=0;i<V;i++)
+     {
+        if(level[i]==l) count+=1;
+     }
+     
+     return count;
+     
+}
