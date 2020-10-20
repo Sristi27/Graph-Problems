@@ -23,7 +23,7 @@ int Graph::BFS(int s,int l)
         
         for(auto i=adj[s].begin();i!=adj[s].end();i++)
         {
-            if(!visited[*i])
+             if(!visited[*i])
             {
                 level[i]=level[s]+1;
                 visited[*i]=true;
