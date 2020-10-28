@@ -15,6 +15,7 @@ int Graph::BFS(int s,int l)
     
     list<int>queue;
     
+    
     while(!queue.empty())
     {
         s=queue.front();
