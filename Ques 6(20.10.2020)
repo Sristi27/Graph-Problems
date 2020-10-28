@@ -63,6 +63,7 @@ int main()
   g.addEdge(2,3);
   g.addEdge(1,4);
   g.addEdge(2,4);
+  
   int s=0, d=3;
   cout<<g.countPaths(s,d);
   }
