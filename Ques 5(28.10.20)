@@ -1,2 +1,20 @@
 Question: Find mother vertex in a graph.
-A vertex is said to be mother vertex if all other vertices can be reached from the mother vertex.
+          A vertex is said to be mother vertex if all other vertices can be reached from the mother vertex.
+          
+          
+Soln:
+
+
+  void DFSUtil(int v,vector<bool>&visited)
+  {
+     visited[v]=true;
+     
+     list<int>::iterator i;
+     for(i=adj[v].begin();i!=adj[v].end();i++)
+     {    
+          if(!visited[*i])
+          DFSUtil(*i,visited)
+     }
+     
+   }
+
