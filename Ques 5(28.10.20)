@@ -1,0 +1,2 @@
+Question: Find mother vertex in a graph.
+A vertex is said to be mother vertex if all other vertices can be reached from the mother vertex.
