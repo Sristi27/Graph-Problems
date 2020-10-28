@@ -1,23 +1,26 @@
 Question: Perform DFS in a graph
 
-void Graph::DFSUtil(int v,vector<bool>&visited)
-{
-    visited[v]=true;
-    cout<<v<<" ";
-    
-    list<int>::iterator i;
-    
-    for(i=adj[v].begin();i!=adj[v].end();i++)
-    {
-      if (!visited[v])
-        DFSUtil(*i,visited);
-    }
-    
-}
-    
-void Graph::DFS(int v)
-{
-   vector<bool>visited(V,false);
-   DFSUtil(v,visited);
 
-}
+Solution:
+
+    void Graph::DFSUtil(int v,vector<bool>&visited)
+    {
+        visited[v]=true;
+        cout<<v<<" ";
+
+        list<int>::iterator i;
+
+        for(i=adj[v].begin();i!=adj[v].end();i++)
+        {
+          if (!visited[v])
+            DFSUtil(*i,visited);
+        }
+
+    }
+
+    void Graph::DFS(int v)
+    {
+       vector<bool>visited(V,false);
+       DFSUtil(v,visited);
+
+    }
