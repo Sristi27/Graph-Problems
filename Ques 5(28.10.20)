@@ -2,8 +2,10 @@ Question: Find mother vertex in a graph.
           A vertex is said to be mother vertex if all other vertices can be reached from the mother vertex.
           
           
+          
 Soln:
 
+          ALGO : KOSARJU'S STRONGLY CONNECTED COMPONENT ALGORITHM
 
   void DFSUtil(int v,vector<bool>&visited)
   {
@@ -17,4 +19,31 @@ Soln:
      }
      
    }
+   
+   
+   int findMotherVertex()
+   {
+        int mv=0;     
+        vector<bool>visited(V,false);
+        
+        for(int i=0;i<V;i++)
+        {
+             if(!visited[i])
+             {      
+                    DFSUtil(i,visited);
+                    mv=i;
+             }
+         }
+         
+         
+         fill(visited.begin(),visited[i].end(),false);
+         DFSUtil(mv,visited);
+         for(int i=0;i<V;i++)
+         {
+              if(visited[i]==false)
+              return -1;  //this vertex cant be reached from mv hence this is not mv
+         }
+         
+        return mv
+        }
 
