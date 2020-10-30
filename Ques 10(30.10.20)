@@ -39,5 +39,5 @@ Soln:
       }
    }
    
-   return maze[r-1][c-1]>0: maze[r-1][c-1]:0;
+   return maze[r-1][c-1]>0: maze[r-1][c-1]:0 ;
  }
