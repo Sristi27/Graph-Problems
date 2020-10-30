@@ -1,1 +1,56 @@
 Question: Count number of islands using BFS
+
+Solution: 
+
+    bool isSafe(vector<vector<int>>A,int i,int j,vector<vector<bool>>vis,int N,int M)
+    {
+        return i>=0 && i<N && j>=0 && j<M && A[i][j] && !vis[i][j];
+    }
+    
+    
+    void BFS(vector<vector<int>>A,int si,int sj,vector<vector<bool>>&vis,int N,int M)
+    {
+        vis[si][sj]=true;
+        int row[]={-1,-1,-1,0,0,1,1,1};
+        int col[]={-1,0,1,-1,+1,-1,0,1};
+        
+        queue<pair<int,int>> q;
+        
+        q.push(make_pair(si,sj));
+        while(!q.empty())
+        {
+           int i=q.front().first;
+           int j=q.front().second;
+           
+           q.pop();
+           
+           for(int k=0;k<8;k++)
+            {
+                if(isSafe(A,i+row[k],j+col[k],vis,N,M))
+                 {
+                  vis[i+row[k]][j+col[k]]=true;
+                  q.push(make_pair(i+row[k],j+col[k]);
+            }
+
+        }
+        }
+    }
+    
+    
+    int findIslands(vector<vector<int>>A, int N, int M) {
+
+        vector<vector<bool>>visited(N,vector<bool>(M,false));
+        int res=0;
+        for(int i=0;i<N;i++)
+        {
+            for(int j=0;j<M;j++)
+            {
+                if(A[i][j] && !visited[i][j])
+                {
+                    BFS(A,i,j,visited,N,M);
+                    res+=1;
+                }
+            }
+        }
+        return res;
+    }
