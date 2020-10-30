@@ -1,1 +1,44 @@
-Count number of islands using DFS
+Question: Count number of islands using DFS
+
+
+Solution: 
+
+    bool isSafe(vector<vector<int>>A,int i,int j,vector<vector<bool>>vis,int N,int M)
+    {
+        return i>=0 && i<N && j>=0 && j<M && A[i][j] && !vis[i][j];
+    }
+    
+    
+    void DFS(vector<vector<int>>A,int si,int sj,vector<vector<bool>>&vis,int N,int M)
+    {
+        vis[si][sj]=true;
+        int row[]={-1,-1,-1,0,0,1,1,1};
+        int col[]={-1,0,1,-1,+1,-1,0,1};
+
+        for(int k=0;k<8;k++)
+            {
+                if(isSafe(A,si+row[k],sj+col[k],vis,N,M))
+                DFS(A,si+row[k],sj+col[k],vis,N,M); 
+            }
+
+
+    }
+    
+    
+    int findIslands(vector<vector<int>>A, int N, int M) {
+
+        vector<vector<bool>>visited(N,vector<bool>(M,false));
+        int res=0;
+        for(int i=0;i<N;i++)
+        {
+            for(int j=0;j<M;j++)
+            {
+                if(A[i][j] && !visited[i][j])
+                {
+                    DFS(A,i,j,visited,N,M);
+                    res+=1;
+                }
+            }
+        }
+        return res;
+    }
